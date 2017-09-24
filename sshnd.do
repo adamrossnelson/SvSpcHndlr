@@ -42,7 +42,6 @@ while substr("$loggbl",-4,.) != ".log" {
 		global loggbl = "empty___space"
 	}
 }
-
 		// Provide user with information & option to cancel.
 
 		noi di "#############################################################################"
@@ -57,7 +56,6 @@ while substr("$loggbl",-4,.) != ".log" {
 		noi di "     Dialogue window asks, Are you sure you wish to proceed?"
 		noi di ""
 		noi di "#############################################################################"
-
 
 	window stopbox rusure "This do file create files on your computer. ?`=char(13)'" ///
 	"Read Stata output and indicate if you wish to continue?"
