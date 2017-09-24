@@ -31,7 +31,7 @@ while substr("$loggbl",-4,.) != ".log" {
 		capture window fsave loggbl "Specify a log file name and location." "*.log"
 			// Close stray SvSpcHndlr log file.
 		capture log close SvSpcHndlr
-		log using "$loggbl", replace name(SvSpcHndlr)
+		noi log using "$loggbl", replace name(SvSpcHndlr)
 		// Define location and file name for resulting data file.
 		global dtagbl = subinstr("$loggbl",".log",".dta",.)
 			// Define location path for workspace.
@@ -77,6 +77,11 @@ noi di ""
 noi di "Global dtagbl = $dtagbl"
 noi di "Global loggbl = $loggbl"
 noi di "Global wkdgbl = $wkdgbl"
-
-log close SvSpcHndlr
+noi di ""
+noi di "{ul:To append log file...}"
+noi di "    Use:  {cmd:log using {it:filename} [, append]}"
+noi di "     OR:  {cmd:log using {it:$loggbl} [, append]}"
+noi di "     OR:  {cmd:log using {it:loggbl (see above)} [, append]}"
+noi di ""
+noi log close SvSpcHndlr
 }
