@@ -1,6 +1,14 @@
 # SvSpcHndlr
 Interactive filename picker for Stata. Previously found in StataQuickReference project.
 
+## Usage
+
+Recommend referencing stable 1.0 release from other do files available at:
+
+```
+do https://raw.githubusercontent.com/adamrossnelson/sshnd/1.0/sshnd.do
+```
+
 ## SvSpcHndlr.do
 
 Routine that interactively gathers input from the user. Prompts the user to specify a log file location. From log file location this do file also infers the same location for saving dta files. Lastly, this do also infers a sub dir which can be used to save and store temporary, working, or meta files.
