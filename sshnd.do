@@ -28,7 +28,7 @@ while substr("$loggbl",-4,.) != ".log" {
 			// Declare a global with a default project name.
 		global loggbl = "LogFileName.log"
 			// Ask user to define project name and location.
-		capture window fsave blahblah "Specify a log file name and location." ///
+		capture window fsave loggbl "Specify a log file name and location." ///
 		    "Stata Log (*.log)|*.log|All Files (*.*)|*.*" log
 		// After update on Dec 3, 2017 following code discontinued working: caused Stata crash.
 		// capture window fsave loggbl "Specify a log file name and location." "*.log"
