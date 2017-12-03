@@ -3,10 +3,10 @@ Interactive filename picker for Stata. Previously found in StataQuickReference p
 
 ## Usage
 
-Recommend referencing stable 1.0 release from other do files available at:
+From command line or other do files available at:
 
 ```
-do https://raw.githubusercontent.com/adamrossnelson/sshnd/1.0/sshnd.do
+do https://raw.githubusercontent.com/adamrossnelson/sshnd/master/sshnd.do
 ```
 
 ## SvSpcHndlr.do
