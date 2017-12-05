@@ -1,6 +1,7 @@
 qui {
 
-// Creation date: September 2017
+// X.X.X. 04DEC2017 Updates following Nov/Dec Stata software update
+// X.X.X. 01SEP2017 Adam Ross Nelson Original Version
 // Author/Creator: Adam Ross Nelson
 // Questions: Via GitHub or Twitter @adamrossnelson
 // Maintained at: https://github.com/adamrossnelson/StataQuickReference
@@ -19,50 +20,41 @@ set more off
 clear all
 set logtype text
 
-// Redefine "$loggbl"
-global loggbl = "empty___space"
-
 // Gathers input from user. Error checks user correctly specified .log filename.
-while substr("$loggbl",-4,.) != ".log" {
-	if "$loggbl" == "empty___space" {
-			// Declare a global with a default project name.
-		global loggbl = "LogFileName.log"
-			// Ask user to define project name and location.
-		capture window fsave loggbl "Specify a log file name and location." ///
-		    "Stata Log (*.log)|*.log|All Files (*.*)|*.*" log
-		// After update on Dec 3, 2017 following code discontinued working: caused Stata crash.
-		// capture window fsave loggbl "Specify a log file name and location." "*.log"
-			// Close stray SvSpcHndlr log file.
-		capture log close SvSpcHndlr
-		noi log using "$loggbl", replace name(SvSpcHndlr)
-		// Define location and file name for resulting data file.
-		global dtagbl = subinstr("$loggbl",".log",".dta",.)
-			// Define location path for workspace.
-		global wkdgbl = subinstr("$loggbl",".log","wksp",.)
-	} 
-	else {
-		capture window stopbox stop "Try again: File name must end in -.log-"
-		global loggbl = "empty___space"
-	}
-}
-		// Provide user with information & option to cancel.
 
-		noi di "#############################################################################"
-		noi di ""
-		noi di "     This do file will create (replace):"
-		noi di "          Datafile:  $dtagbl"
-		noi di "          Logfile:   $loggbl"
-		noi di ""
-		noi di "     This do file will create (use):"
-		noi di "          Workspace: $wkdgbl"
-		noi di ""
-		noi di "     Dialogue window asks, Are you sure you wish to proceed?"
-		noi di ""
-		noi di "#############################################################################"
+	// Declare a global with a default project name.
+global loggbl = "LogFileName.log"
+	// Ask user to define project name and location.
+capture window fsave loggbl "Specify a log file name and location." "Log file|*.log" log
+	// Close stray SvSpcHndlr log file.
+capture log close SvSpcHndlr
+noi log using "$loggbl", replace name(SvSpcHndlr)
+	// Define location and file name for resulting data file.
+global dtagbl = subinstr("$loggbl",".log",".dta",.)
+	// Define location path for workspace.
+global wkdgbl = subinstr("$loggbl",".log","wksp",.)
 
-	window stopbox rusure "This do file create files on your computer. ?`=char(13)'" ///
-	"Read Stata output and indicate if you wish to continue?"
-	window stopbox note "Okay, will now proceed."
+	// Provide user with information & option to cancel.
+
+noi di ""
+noi di "#############################################################################"
+noi di ""
+noi di "     Will create (or overwrite):"
+noi di "          Datafile:  $dtagbl"
+noi di "          Logfile:   $loggbl"
+noi di ""
+noi di "     Will create (use):"
+noi di "          Workspace: $wkdgbl"
+noi di ""
+noi di "     Dialogue window asks, Are you sure you wish to proceed?"
+noi di ""
+noi di "#############################################################################"
+
+window stopbox rusure "Will create or overwrite : `=char(13)'" ///
+"$loggbl, " ///
+"$dtagbl, & " /// 
+"$wkdgbl. `=char(13)'" ///
+"Do you wish to continue?"
 
 	// Make directory at workspace location.
 	// -mkdir- for existing location does not delete existing data.
