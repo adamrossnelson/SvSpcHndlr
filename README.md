@@ -1,7 +1,9 @@
-# SvSpcHndlr
-Interactive filename picker for Stata. Previously found in StataQuickReference project.
+# sshnd
 
-## Usage
+## Introduction
+Interactive filename picker for Stata.
+
+## Basic Usage
 
 From command line or other do files available at:
 
@@ -9,13 +11,17 @@ From command line or other do files available at:
 do https://raw.githubusercontent.com/adamrossnelson/sshnd/master/sshnd.do
 ```
 
-## SvSpcHndlr.do
+## Extended Usage
 
-Routine that interactively gathers input from the user. Prompts the user to specify a log file location. From log file location this do file also infers the same location for saving dta files. Lastly, this do also infers a sub dir which can be used to save and store temporary, working, or meta files.
+Gathers input from the user. Prompts  user to specify a log file location. Input from user establishes a naming convention. From that convention `sshnd` creates three global variables that can be used to save files matching that naming convention. `dtagbl` will contain path and filename for a `.dta` file. `loggbl` will contain a path and filename for a `.log` file. `wkdgbl` will contain a path that may serve as a working directory.
 
-Intended use is to call this do file from another do file. This do file will establish three globals for later use: lobal dtagbl = $dtagbl AND Global loggbl = $loggbl AND Global wkdgbl = $wkdgbl.
+After creating the `dtagbl` `loggbl` and `wkdgbl`, `sshnd` changes the working directory to the path stored in `wkdgble`.
 
-User need not specify Desktop location. User may specify any location.
+`sshnd` results are logged in the log file specified by `loggbl` which may be appended by subsequent do files.
+
+This routine works well at the beginning of do files which are intended to execute standardized/routine procudures but by multiple users with different file systems. For example the [StataIPEDSAll](https://github.com/adamrossnelson/StataIPEDSAll) quickly collects data from online and then compiles panel data sets.
+
+Note: Example below references desktop location hwever, user(s) need not specify Desktop location.
 
 Example of do file output:
 ```
