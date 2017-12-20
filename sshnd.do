@@ -1,5 +1,9 @@
 qui {
 
+    // Branch 1.0 Retired
+	// For more information see master branch:
+xxx // https://github.com/adamrossnelson/sshnd/tree/master
+
 // Creation date: September 2017
 // Author/Creator: Adam Ross Nelson
 // Questions: Via GitHub or Twitter @adamrossnelson
