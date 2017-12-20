@@ -3,6 +3,10 @@
 ## Introduction
 Interactive filename picker for Stata.
 
+## Help Wanted
+
+This filename picker could be improved if it were converted to a package. Seeking collaborators on that conversion project.
+
 ## Basic Usage
 
 From command line or other do files available at:
