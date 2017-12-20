@@ -36,7 +36,7 @@ Example of do file output:
           Logfile:   C:\Users\username\Desktop\UserInputName.log
 
      This do file will create (use):
-          Workspace: C:\Users\Adam Ross Nelson\Desktop\testtestwksp
+          Workspace: C:\Users\username\Desktop\testtestwksp
 
      Dialogue window asks, Are you sure you wish to proceed?
 
