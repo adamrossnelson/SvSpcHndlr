@@ -17,7 +17,7 @@ do https://raw.githubusercontent.com/adamrossnelson/sshnd/master/sshnd.do
 
 ## Extended Usage
 
-Gathers input from the user. Prompts  user to specify a log file location. Input from user establishes a naming convention. From that convention `sshnd` creates three global variables that can be used to save files matching that naming convention. `dtagbl` will contain path and filename for a `.dta` file. `loggbl` will contain a path and filename for a `.log` file. `wkdgbl` will contain a path that may serve as a working directory.
+Gathers input from the user. Prompts  user to specify a log file location. Input from user establishes a naming convention. From that convention `sshnd` creates three global variables that can be used to save files matching that naming convention. `dtagbl` will contain path and filename for a `.dta` file. `loggbl` will contain a path and filename for a `.log` file. `wkdgbl` will contain a path that may serve as a workspace directory to be used for storage of temporary files.
 
 After creating the `dtagbl` `loggbl` and `wkdgbl`, `sshnd` changes the working directory to the path stored in `wkdgble`.
 
