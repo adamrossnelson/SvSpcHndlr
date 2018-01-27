@@ -27,6 +27,7 @@ global loggbl = "LogFileName.log"
 	// Ask user to define project name and location.
 capture window fsave loggbl "Specify a log file name and location." "Log file|*.log" log
 	// Close stray SvSpcHndlr log file.
+capture log close
 capture log close SvSpcHndlr
 noi log using "$loggbl", replace name(SvSpcHndlr)
 	// Define location and file name for resulting data file.
